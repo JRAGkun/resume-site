@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Rick A. Galiza - Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 84% 4.9%;
+            --primary: 221.2 83.2% 53.3%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96.1%;
+            --secondary-foreground: 222.2 47.4% 11.2%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96.1%;
+            --accent-foreground: 222.2 47.4% 11.2%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 221.2 83.2% 53.3%;
+            --radius: 0.5rem;
+        }
+
+        .dark {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --card: 222.2 84% 4.9%;
+            --card-foreground: 210 40% 98%;
+            --popover: 222.2 84% 4.9%;
+            --popover-foreground: 210 40% 98%;
+            --primary: 217.2 91.2% 59.8%;
+            --primary-foreground: 222.2 47.4% 11.2%;
+            --secondary: 217.2 32.6% 17.5%;
+            --secondary-foreground: 210 40% 98%;
+            --muted: 217.2 32.6% 17.5%;
+            --muted-foreground: 215 20.2% 65.1%;
+            --accent: 217.2 32.6% 17.5%;
+            --accent-foreground: 210 40% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 217.2 32.6% 17.5%;
+            --input: 217.2 32.6% 17.5%;
+            --ring: 224.3 76.3% 48%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom, hsl(var(--background)), hsl(var(--muted)));
+            color: hsl(var(--foreground));
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        .card {
+            background-color: hsl(var(--card));
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            border: 1px solid hsl(var(--border));
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--card-foreground));
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            background-color: hsl(var(--muted));
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            color: hsl(var(--muted-foreground));
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-decoration: none;
+            color: hsl(var(--foreground));
+        }
+
+        .contact-item:hover {
+            color: hsl(var(--primary));
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-degree {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .education-school, .education-years {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: 1px solid hsl(var(--border));
+            background-color: transparent;
+            color: hsl(var(--foreground));
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: hsl(var(--accent));
+            color: hsl(var(--accent-foreground));
+        }
+
+        .btn i {
+            margin-left: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .experience-item {
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .experience-company {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .experience-list-item i {
+            color: hsl(var(--primary));
+            margin-right: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .project-item {
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 1rem;
+        }
+
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-description {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid hsl(var(--border));
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            background-color: hsl(var(--background));
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            z-index: 10;
+        }
+
+        .theme-toggle i {
+            font-size: 1.25rem;
+            color: hsl(var(--foreground));
+        }
+
+        .dark .theme-toggle .fa-sun {
+            display: block;
+        }
+
+        .dark .theme-toggle .fa-moon {
+            display: none;
+        }
+
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+
+        .theme-toggle .fa-moon {
+            display: block;
+        }
+
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="profile">
+                            <div class="profile-img">
+                                <img src="https://drive.google.com/thumbnail?id=1yOlBoezVn2qx1zSTTTcM488zWK2qas5H" alt="Profile">
+                            </div>
+                            <h1 class="profile-name">John Rick A. Galiza</h1>
+                            <p class="profile-title">Quality Assurance Tester & Engineer | Automation Enthusiast</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="section-title">Contact</h3>
+                                <div>
+                                    <a href="mailto:example@example.com" class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>JRGalizaQA@gmail.com</span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/johnrickgaliza" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span>linkedin.com/in/johnrickgaliza</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="section-title">Education</h3>
+                                <div class="education-item">
+                                    <p class="education-degree">Bachelor of Science in Information Technology</p>
+                                    <p class="education-school">STI College Pasay-EDSA</p>
+                                    <p class="education-years">2020 - 2024</p>
+                                </div>
+                            </div>
+
+                            <!-- For Later
+                            <a href="#" class="btn">
+                                Download CV
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
+            <!-- Main Content -->
+            <div class="space-y-4">
+                <!-- About Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">About Me</h2>
+                    </div>
+                    <div class="card-content space-y-4">
+                        <p>
+                            Quality assurance and reliability are my main interests while I specialize in manual testing, 
+                            automated testing, debugging, and troubleshooting. My knowledge base includes Python, JavaScript, 
+                            HTML, and C#.
+                        </p>
+                        <p>
+                            I am dedicated to boosting software performance, developing better testing approaches, and 
+                            improving user interactions. I am eager to learn and grow within the QA field while also 
+                            exploring game development and AI.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Skills Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Skills</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="skills-container">
+                            <span class="badge">Automation Testing (Selenium, Playwright)</span>
+                            <span class="badge">Manual Testing (Web, API using Postman)</span>
+                            <span class="badge">Bug Documentation & Workflow</span>
+                            <span class="badge">Software Testing & Debugging</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">C#</span>
+                            <span class="badge">HTML</span>
+                            <span class="badge">Test Planning & Scripting</span>
+                            <span class="badge">Chrome DevTools</span>
+                            <span class="badge">Unity Engine</span>
+                            <span class="badge">Game Development</span>
+                            <span class="badge">Trello</span>
+                            <span class="badge">pgAdmin</span>
+                            <span class="badge">Docker</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Experience</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="experience-item">
+                            <h3 class="experience-title">OJT - Quality Assurance Tester & Engineer</h3>
+                            <p class="experience-company">Golden Arrow Digital Solution</p>
+                            <ul class="experience-list">
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Performed manual testing using Postman and websites.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Developed frontend automation using Python and Selenium.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Created backend API automation using JavaScript.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Worked with Trello, pgAdmin, and Docker for workflow management.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Tested websites on both local and live servers.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projects Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Projects</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="projects-grid">
+                            <div class="project-item">
+                                <h3 class="project-title">Automation Testing Framework</h3>
+                                <p class="project-description">
+                                    Developed a comprehensive testing framework using Selenium and Python for web application testing.
+                                </p>
+                            </div>
+                            <div class="project-item">
+                                <h3 class="project-title">API Testing Suite</h3>
+                                <p class="project-description">
+                                    Created an automated API testing suite using JavaScript and Postman for backend validation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; <span id="current-year"></span> John Rick A. Galiza. All rights reserved.</p>
+    </footer>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark')) {
+                document.body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
