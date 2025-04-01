@@ -79,6 +79,7 @@
         @media (min-width: 768px) {
             .grid {
                 grid-template-columns: 1fr 2fr;
+                align-items: start;
             }
         }
 
@@ -88,6 +89,8 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             overflow: hidden;
             border: 1px solid hsl(var(--border));
+            height: auto;
+            margin-bottom: 1.5rem;
         }
 
         .card-header {
@@ -106,8 +109,11 @@
         }
 
         .sidebar {
-            position: sticky;
-            top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: static;
+            height: auto;
         }
 
         .profile {
@@ -335,13 +341,95 @@
         .space-y-4 > * + * {
             margin-top: 1rem;
         }
+
+        .experience-category {
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--primary));
+        }
+
+        .capstone-project {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed hsl(var(--border));
+        }
+
+        .capstone-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            margin-top: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--primary));
+        }
+
+        .interests-list {
+            list-style: none;
+        }
+
+        .interests-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .interests-item i {
+            color: hsl(var(--primary));
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-name {
+            font-size: 0.875rem;
+        }
+
+        .language-level {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .progress-bar {
+            height: 0.5rem;
+            background-color: hsl(var(--secondary));
+            border-radius: var(--radius);
+            margin-top: 0.25rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: hsl(var(--primary));
+        }
+
+        /* Mobile-specific fixes */
+        @media (max-width: 767px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .theme-toggle {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="grid">
-            <!-- Sidebar -->
             <div class="sidebar">
+                <!-- Profile Card -->
                 <div class="card">
                     <div class="card-content">
                         <div class="profile">
@@ -366,15 +454,6 @@
                                     </a>
                                 </div>
                             </div>
-                            
-                            <div>
-                                <h3 class="section-title">Education</h3>
-                                <div class="education-item">
-                                    <p class="education-degree">Bachelor of Science in Information Technology</p>
-                                    <p class="education-school">STI College Pasay-EDSA</p>
-                                    <p class="education-years">2020 - 2024</p>
-                                </div>
-                            </div>
 
                             <!-- For Later
                             <a href="#" class="btn">
@@ -386,8 +465,82 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Education & Certifications Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Education & Certifications</h2>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <h3 class="section-title">Education</h3>
+                            <div class="education-item">
+                                <p class="education-degree">Bachelor of Science in Information Technology</p>
+                                <p class="education-school">STI College Pasay-EDSA</p>
+                                <p class="education-years">2020 - 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="section-title">Certifications</h3>
+                            <p class="education-school">Currently seeking industry-relevant certifications to enhance professional qualifications.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages & Interests Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Languages & Interests</h2>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <h3 class="section-title">Languages</h3>
+                            <div class="language-item">
+                                <div>
+                                    <p class="language-name">English</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <span class="language-level">Upper-Intermediate</span>
+                            </div>
+                            <div class="language-item">
+                                <div>
+                                    <p class="language-name">Filipino</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <span class="language-level">Native</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="section-title">Interests</h3>
+                            <ul class="interests-list">
+                                <li class="interests-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>Automation</span>
+                                </li>
+                                <li class="interests-item">
+                                    <i class="fas fa-bug"></i>
+                                    <span>Quality Assurance</span>
+                                </li>
+                                <li class="interests-item">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>Game Development</span>
+                                </li>
+                                <li class="interests-item">
+                                    <i class="fas fa-robot"></i>
+                                    <span>Artificial Intelligence</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-                            
+            
             <!-- Main Content -->
             <div class="space-y-4">
                 <!-- About Section -->
@@ -397,14 +550,15 @@
                     </div>
                     <div class="card-content space-y-4">
                         <p>
-                            Quality assurance and reliability are my main interests while I specialize in manual testing, 
-                            automated testing, debugging, and troubleshooting. My knowledge base includes Python, JavaScript, 
-                            HTML, and C#.
+                            Quality assurance professional with a focus on reliability and testing excellence. Skilled in manual testing, 
+                            automated testing, debugging and troubleshooting. Technical expertise includes Python, JavaScript, 
+                            HTML and C#.
                         </p>
                         <p>
-                            I am dedicated to boosting software performance, developing better testing approaches, and 
-                            improving user interactions. I am eager to learn and grow within the QA field while also 
-                            exploring game development and AI.
+                            Committed to enhancing software performance through innovative testing approaches and 
+                            improved user interactions. Actively pursuing growth opportunities in the QA field while exploring 
+                            game development through Unity Engine experience. Currently developing skills in AI technologies 
+                            to stay current with industry trends.
                         </p>
                     </div>
                 </div>
@@ -415,16 +569,25 @@
                         <h2 class="card-title">Skills</h2>
                     </div>
                     <div class="card-content">
+                        <div class="skill-category">Testing & QA</div>
                         <div class="skills-container">
                             <span class="badge">Automation Testing (Selenium, Playwright)</span>
                             <span class="badge">Manual Testing (Web, API using Postman)</span>
                             <span class="badge">Bug Documentation & Workflow</span>
                             <span class="badge">Software Testing & Debugging</span>
+                            <span class="badge">Test Planning & Scripting</span>
+                        </div>
+                        
+                        <div class="skill-category">Programming Languages</div>
+                        <div class="skills-container">
                             <span class="badge">Python</span>
                             <span class="badge">JavaScript</span>
                             <span class="badge">C#</span>
                             <span class="badge">HTML</span>
-                            <span class="badge">Test Planning & Scripting</span>
+                        </div>
+                        
+                        <div class="skill-category">Tools & Technologies</div>
+                        <div class="skills-container">
                             <span class="badge">Chrome DevTools</span>
                             <span class="badge">Unity Engine</span>
                             <span class="badge">Game Development</span>
@@ -444,28 +607,89 @@
                         <div class="experience-item">
                             <h3 class="experience-title">OJT - Quality Assurance Tester & Engineer</h3>
                             <p class="experience-company">Golden Arrow Digital Solution</p>
+                            
+                            <div class="experience-category">Manual Testing</div>
                             <ul class="experience-list">
                                 <li class="experience-list-item">
                                     <i class="fas fa-chevron-right"></i>
-                                    <span>Performed manual testing using Postman and websites.</span>
+                                    <span>Performed comprehensive UI testing across local and live website environments.</span>
                                 </li>
                                 <li class="experience-list-item">
                                     <i class="fas fa-chevron-right"></i>
-                                    <span>Developed frontend automation using Python and Selenium.</span>
+                                    <span>Evaluated functionality of buttons, input fields, modals, and navigation elements.</span>
                                 </li>
                                 <li class="experience-list-item">
                                     <i class="fas fa-chevron-right"></i>
-                                    <span>Created backend API automation using JavaScript.</span>
-                                </li>
-                                <li class="experience-list-item">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <span>Worked with Trello, pgAdmin, and Docker for workflow management.</span>
-                                </li>
-                                <li class="experience-list-item">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <span>Tested websites on both local and live servers.</span>
+                                    <span>Created detailed test documentation and bug reports using Trello for team collaboration.</span>
                                 </li>
                             </ul>
+                            
+                            <div class="experience-category">Automation Testing (Selenium & Python)</div>
+                            <ul class="experience-list">
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Created Selenium automation scripts that streamlined web interaction testing and workflow validation.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Applied XPath and CSS selectors for reliable element targeting across different web applications.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Developed Python scripts that reduced testing time for repetitive scenarios by 60%.</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="experience-category">API Testing (Postman)</div>
+                            <ul class="experience-list">
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Executed manual API endpoint testing to verify HTTP status codes and response data accuracy.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Developed automated Postman test suites for consistent response validation and schema verification.</span>
+                                </li>
+                                <li class="experience-list-item">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>Implemented Postman assertions to monitor response structure and performance metrics.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Details Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Education Details</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="education-item">
+                            <p class="education-degree">Bachelor's Degree in Information Technology</p>
+                            <p class="education-school">STI College</p>
+                            
+                            <div class="capstone-project">
+                                <p class="capstone-title">Capstone Project: LiteBro</p>
+                                <ul class="experience-list">
+                                    <li class="experience-list-item">
+                                        <i class="fas fa-chevron-right"></i>
+                                        <span>Team project developing a specialized classroom browser that prevents academic dishonesty during exams and assignments.</span>
+                                    </li>
+                                    <li class="experience-list-item">
+                                        <i class="fas fa-chevron-right"></i>
+                                        <span>Core features included unauthorized website blocking, prevention of alt-tabbing/minimizing, and focus maintenance tools.</span>
+                                    </li>
+                                    <li class="experience-list-item">
+                                        <i class="fas fa-chevron-right"></i>
+                                        <span>Served as QA tester responsible for validating website blocking mechanisms, button functionality, multi-tab handling, and user experience.</span>
+                                    </li>
+                                    <li class="experience-list-item">
+                                        <i class="fas fa-chevron-right"></i>
+                                        <span>Successfully identified critical bugs, documented findings, and verified feature compliance with project specifications.</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -473,20 +697,32 @@
                 <!-- Projects Section -->
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Projects</h2>
+                        <h2 class="card-title">Projects & Small Projects</h2>
                     </div>
                     <div class="card-content">
                         <div class="projects-grid">
                             <div class="project-item">
-                                <h3 class="project-title">Automation Testing Framework</h3>
+                                <h3 class="project-title">MonkeyType Automation</h3>
                                 <p class="project-description">
-                                    Developed a comprehensive testing framework using Selenium and Python for web application testing.
+                                    Playwright script automating UI interactions with the popular typing test website for performance analysis.
                                 </p>
                             </div>
                             <div class="project-item">
-                                <h3 class="project-title">API Testing Suite</h3>
+                                <h3 class="project-title">Web Change Detection</h3>
                                 <p class="project-description">
-                                    Created an automated API testing suite using JavaScript and Postman for backend validation.
+                                    Selenium & Python tool that monitors websites for UI updates and sends notifications when changes are detected.
+                                </p>
+                            </div>
+                            <div class="project-item">
+                                <h3 class="project-title">API Response Validation</h3>
+                                <p class="project-description">
+                                    Postman test collection for automated response verification and schema validation across multiple endpoints.
+                                </p>
+                            </div>
+                            <div class="project-item">
+                                <h3 class="project-title">YouTube Auto-Subscribe Script</h3>
+                                <p class="project-description">
+                                    Playwright automation tool for managing channel subscriptions to VTuber content creators.
                                 </p>
                             </div>
                         </div>
@@ -506,7 +742,6 @@
     </button>
 
     <script>
-        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         const themeToggle = document.getElementById('theme-toggle');
